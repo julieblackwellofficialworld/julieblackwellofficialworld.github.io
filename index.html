@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Creative DIY Corner</title>
+    
+    <!-- Warm & Modern Fonts for a DIY Craft Aesthetic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Warm Craft & DIY Styles */
+        :root {
+            --bg-main: #FAFAF9; /* Warm off-white */
+            --bg-pattern: #F5F5F4;
+            --text-main: #292524; /* Deep warm gray */
+            --text-muted: #78716C; /* Soft taupe */
+            --primary-accent: #D97706; /* Crafty Amber/Orange */
+            --secondary-accent: #14B8A6; /* Fresh Teal */
+            --card-bg: #FFFFFF;
+            --border-light: #E7E5E4;
+            --radius: 16px;
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.75;
+            color: var(--text-main);
+            background-color: var(--bg-main);
+            /* Subtle dotted grid pattern for a "craft mat" or sketchbook feel */
+            background-image: radial-gradient(var(--border-light) 1px, transparent 1px);
+            background-size: 24px 24px;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, .username {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-main);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Top Navigation - Clean & Modern Pill Links */
+        .top-nav {
+            padding: 15px 0;
+            text-align: center;
+            background-color: rgba(250, 250, 249, 0.9);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .top-nav a {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 500;
+            font-family: 'Outfit', sans-serif;
+            padding: 8px 18px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-radius: 50px;
+            border: 1px solid transparent;
+        }
+
+        .top-nav a:hover {
+            color: var(--primary-accent);
+            background-color: #FEF3C7;
+            border-color: #FDE68A;
+            transform: translateY(-1px);
+        }
+
+        /* Header Area */
+        header {
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3.5rem;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        header h1:hover {
+            color: var(--primary-accent);
+        }
+
+        header p {
+            margin: 15px auto 0;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            background: var(--card-bg);
+            display: inline-block;
+            padding: 8px 24px;
+            border-radius: 50px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Post Cards - Clean White Polaroids */
+        .post-card, .single-post {
+            background: var(--card-bg);
+            padding: 0;
+            margin-bottom: 50px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .post-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .single-post {
+            cursor: default;
+        }
+
+        .post-header {
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--border-light);
+            background: #FAFAFA;
+        }
+
+        .post-header img.avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 2px solid var(--primary-accent);
+            object-fit: cover;
+        }
+
+        .post-header .username {
+            font-size: 1.1rem;
+            color: var(--text-main);
+        }
+
+        .post-image {
+            width: 100%;
+            display: block;
+            max-height: 400px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .post-content {
+            padding: 35px 40px 20px;
+        }
+
+        .post-content h2, .post-content h1 {
+            margin: 0 0 15px;
+            font-size: 2.2rem;
+            line-height: 1.3;
+            color: var(--text-main);
+        }
+
+        .post-content p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            color: var(--text-main);
+        }
+
+        .post-footer {
+            padding: 15px 40px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 500;
+            font-family: 'Outfit', sans-serif;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-light);
+            background: #FAFAFA;
+        }
+
+        .single-post .post-image {
+            max-height: none;
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 25px;
+            color: var(--text-main);
+            background-color: var(--card-bg);
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+        }
+
+        .back-button:hover {
+            background-color: #F3F4F6;
+            color: var(--primary-accent);
+            border-color: #E5E7EB;
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <a onclick="navigate('home')">Home</a>
+        <a onclick="navigate('page', 'about')">About</a>
+        <a onclick="navigate('page', 'privacy')">Privacy Policy</a>
+        <a onclick="navigate('page', 'terms')">Terms</a>
+        <a onclick="navigate('page', 'contact')">Contact</a>
+    </nav>
+
+    <header>
+        <div class="container">
+            <h1 onclick="navigate('home')">The Creative DIY Corner</h1>
+            <p>Handmade projects, upcycling ideas, and craft inspiration.</p>
+        </div>
+    </header>
+
+    <main class="container" id="app">
+        <!-- Content will be injected here by JavaScript -->
+    </main>
+
+    <script>
+        // 1. Dynamic Blog Posts
+        const posts = [
+            {
+                id: 'diy-boho-macrame-wall-hanging',
+                title: 'DIY Boho Macrame Wall Hanging',
+                date: 'June 14, 2026',
+                // 👇 Using a free stock image of Macrame from Unsplash
+                image: 'https://images.unsplash.com/photo-1522758971460-1d21eed7dc1d?q=80&w=1000&auto=format&fit=crop',
+                excerpt: 'Hey craft lovers! 🧶 Ready to transform your blank walls with a touch of boho charm? This simple macrame wall hanging guide is exactly what you need to bring warmth and texture into your home. It is surprisingly beginner-friendly and so relaxing to make on a lazy weekend.\n• Master 3 basic knots quickly\n• Create budget-friendly home decor\nGrab your cotton cord and let us get knotting! Save for later! ✨',
+                content: `
+<p>If you have been looking for a creative weekend project that doubles as gorgeous home decor, you are in the right place. Creating your own macrame wall hanging might look intimidating, but it is actually one of the most forgiving and relaxing crafts you can learn. Today, we are breaking down the process so anyone can create a beautiful, textured piece for their space.</p>
+
+<div style="background:#f8fafc;border:1px solid #dbe4ee;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:24px;line-height:1.4;color:#1e293b;font-weight:700;padding-left:12px;border-left:4px solid #cbd5e1;">Key Takeaways</h3>
+  <ul style="margin:0;padding-left:20px;">
+    <li>You only need three basic knots to complete this entire project.</li>
+    <li>Using 3mm or 4mm single-strand cotton cord gives the best boho fringe.</li>
+    <li>A natural wooden dowel or a foraged branch works perfectly as a base.</li>
+    <li>Macrame is a very forgiving craft, mistakes are easily untied!</li>
+  </ul>
+</div>
+
+<h2 style="font-size:30px;line-height:1.3;margin:36px 0 18px;color:#0f172a;border-bottom:2px solid #e2e8f0;padding-bottom:10px;font-weight:700;">Gathering Your Materials</h2>
+
+<p>Before we start tying knots, setting up your workspace is crucial. You do not need a fancy studio. A clothing rack, the back of a chair, or even a hook on your wall works perfectly for holding your dowel in place while you work.</p>
+
+<p style="background:#f8fafc;border-left:4px solid #2563eb;padding:16px 18px;border-radius:10px;margin:22px 0;color:#1e293b;"><strong>Important:</strong> Always cut your cords about four times the length of your desired final piece. It is always better to have too much cord at the end than to run out halfway through a complicated knot pattern!</p>
+
+<h3 style="font-size:24px;line-height:1.4;margin:28px 0 14px;color:#1e293b;font-weight:700;padding-left:12px;border-left:4px solid #cbd5e1;">The Three Basic Knots</h3>
+
+<p>To recreate this look, you will rely heavily on the Lark's Head knot to attach your cords, followed by the Square Knot and the Double Half Hitch. Once your hands get used to the motion, you will find a natural rhythm.</p>
+
+<div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h4 style="margin-top:0;margin-bottom:10px;font-size:20px;line-height:1.4;color:#166534;font-weight:700;">Why This Matters</h4>
+  <p style="margin:0;color:#15803d;">Mastering the tension of your Square Knot is the secret to a uniform, professional-looking wall hanging. Try to pull the cords with the exact same pressure every time.</p>
+</div>
+
+<h4 style="font-size:20px;line-height:1.4;margin:22px 0 12px;color:#334155;font-weight:700;background:#f8fafc;padding:10px 14px;border-radius:8px;">Brushing Out The Fringe</h4>
+
+<p>The finishing touch is always the fringe. Trim the bottom of your cords into a sharp V-shape or a soft curve, then use a pet slicker brush or a fine-tooth comb to gently brush out the cotton strands until they are fluffy and soft.</p>
+
+<p style="background:#fff7ed;border:1px solid #fed7aa;padding:16px 18px;border-radius:10px;margin:22px 0;color:#9a3412;"><strong>Pro Tip:</strong> Spray your brushed fringe lightly with a bit of stiffening hairspray to keep it laying perfectly flat against your wall!</p>
+
+<div style="background:#faf5ff;border:1px solid #e9d5ff;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:24px;line-height:1.4;color:#4c1d95;font-weight:700;padding-left:12px;border-left:4px solid #d8b4fe;">Quick Points</h3>
+  <ul style="margin:0;padding-left:20px;color:#581c87;">
+    <li>Setup takes 10 minutes</li>
+    <li>Average project time is 2 hours</li>
+    <li>Great for gifting</li>
+  </ul>
+</div>
+
+<p>Crafting your own decor brings so much personality into a room. Grab your supplies, put on a great playlist, and enjoy the creative process!</p>
+
+<div style="margin-top:28px;">
+  <h3 style="margin-bottom:12px;font-size:24px;line-height:1.4;color:#1e293b;font-weight:700;padding-left:12px;border-left:4px solid #cbd5e1;">Tags</h3>
+  <span style="display:inline-block;background:#eef2f7;color:#1f2937;padding:6px 10px;border-radius:999px;margin:4px 6px 0 0;font-size:13px;">Macrame</span>
+  <span style="display:inline-block;background:#eef2f7;color:#1f2937;padding:6px 10px;border-radius:999px;margin:4px 6px 0 0;font-size:13px;">Boho Decor</span>
+  <span style="display:inline-block;background:#eef2f7;color:#1f2937;padding:6px 10px;border-radius:999px;margin:4px 6px 0 0;font-size:13px;">DIY Crafts</span>
+  <span style="display:inline-block;background:#eef2f7;color:#1f2937;padding:6px 10px;border-radius:999px;margin:4px 6px 0 0;font-size:13px;">Beginner Friendly</span>
+  <span style="display:inline-block;background:#eef2f7;color:#1f2937;padding:6px 10px;border-radius:999px;margin:4px 6px 0 0;font-size:13px;">Home Styling</span>
+</div>
+`
+            },
+            {
+                id: 'hand-poured-soy-candles',
+                title: 'Hand-Poured Scented Soy Candles',
+                date: 'June 21, 2026',
+                // 👇 Using a free stock image of Candle Pouring from Unsplash
+                image: 'https://images.unsplash.com/photo-1603006905003-be475563bc59?q=80&w=1000&auto=format&fit=crop',
+                excerpt: 'Want to make your house smell amazing without spending a fortune? 🕯️ Learn how to make your very own hand-poured soy candles at home! It is easier than baking and makes the perfect personalized gift.\n• Custom blend your own unique scents\n• Clean burning and eco-friendly\nTurn your kitchen into a cozy apothecary today. Save for later! 🌿',
+                content: `
+<p>There is something incredibly magical about lighting a candle you made with your own two hands. Crafting hand-poured soy candles at home allows you to control the ingredients, customize the fragrances, and reuse beautiful vintage jars or thrifted teacups. Plus, it makes your kitchen smell like a high-end boutique.</p>
+
+<div style="background:#f8fafc;border:1px solid #dbe4ee;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:24px;line-height:1.4;color:#1e293b;font-weight:700;padding-left:12px;border-left:4px solid #cbd5e1;">Key Takeaways</h3>
+  <ul style="margin:0;padding-left:20px;">
+    <li>Soy wax burns cleaner and longer than traditional paraffin.</li>
+    <li>Temperature control is the secret to a smooth candle top.</li>
+    <li>Always use specialized candle fragrance oils, not just standard essential oils.</li>
+    <li>Pre-warming your glass jars prevents the wax from shrinking away from the sides.</li>
+  </ul>
+</div>
+
+<h2 style="font-size:30px;line-height:1.3;margin:36px 0 18px;color:#0f172a;border-bottom:2px solid #e2e8f0;padding-bottom:10px;font-weight:700;">Choosing the Right Supplies</h2>
+
+<p>Not all wax is created equal. For beginners, soy wax flakes are incredibly easy to measure and melt. You will also need a double boiler setup, a reliable candy thermometer, and cotton or wooden wicks. Wooden wicks offer that cozy, crackling fireplace sound, but cotton wicks are often easier to keep lit if you are just starting out.</p>
+
+<p style="background:#f8fafc;border-left:4px solid #2563eb;padding:16px 18px;border-radius:10px;margin:22px 0;color:#1e293b;"><strong>Important:</strong> Your fragrance oil must be added at the exact right temperature (usually around 185 degrees Fahrenheit for soy wax) so it binds properly with the wax. If you add it when the wax is too hot, the scent will burn off before the candle ever sets.</p>
+
+<h3 style="font-size:24px;line-height:1.4;margin:28px 0 14px;color:#1e293b;font-weight:700;padding-left:12px;border-left:4px solid #cbd5e1;">The Melting and Pouring Process</h3>
+
+<p>Slow and steady wins the race. Melt your wax gently, stir in your fragrance slowly for about two minutes, and then let the wax cool slightly before pouring it into your prepared jars.</p>
+
+<div style="background:#fff1f2;border:1px solid #fecdd3;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h4 style="margin-top:0;margin-bottom:10px;font-size:20px;line-height:1.4;color:#9f1239;font-weight:700;">Expert Insight</h4>
+  <p style="margin:0;color:#be123c;">To secure your wick perfectly in the center, use a wick sticker at the bottom of the jar and hold the top in place with a wooden clothespin or two chopsticks resting across the rim.</p>
+</div>
+
+<h4 style="font-size:20px;line-height:1.4;margin:22px 0 12px;color:#334155;font-weight:700;background:#f8fafc;padding:10px 14px;border-radius:8px;">Curing Time is Crucial</h4>
+
+<p>Patience is the hardest part of candle making. While your candle will look solid in a few hours, it needs time to properly cure. Curing allows the fragrance and wax to fully bind.</p>
+
+<p style="background:#fff7ed;border:1px solid #fed7aa;padding:16px 18px;border-radius:10px;margin:22px 0;color:#9a3412;"><strong>Pro Tip:</strong> Let your soy candles cure with the lids on for at least one week before lighting them. This dramatically improves the "hot throw" (how strong the candle smells when lit).</p>
+
+<div style="background:#f0fdfa;border:1px solid #ccfbf1;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:24px;line-height:1.4;color:#0f766e;font-weight:700;padding-left:12px;border-left:4px solid #5eead4;">At a Glance</h3>
+  <ul style="margin:0;padding-left:20px;color:#115e59;">
+    <li>Melt wax to 185°F</li>
+    <li>Add fragrance oil</li>
+    <li>Pour at 135°F</li>
+    <li>Cure for 7 days</li>
+  </ul>
+</div>
+
+<p>Once you pour your first successful batch, you will never want to buy store-bought candles again. Have fun mixing scents and enjoy your cozy creations!</p>
+
+<div style="margin-top:28px;">
+  <h3 style="margin-bottom:12px;font-size:24px;line-height:1.4;color:#1e293b;font-weight:700;padding-left:12px;border-left:4px solid #cbd5e1;">Tags</h3>
+  <span style="display:inline-block;background:#eef2f7;color:#1f2937;padding:6px 10px;border-radius:999px;margin:4px 6px 0 0;font-size:13px;">Candle Making</span>
+  <span style="display:inline-block;background:#eef2f7;color:#1f2937;padding:6px 10px;border-radius:999px;margin:4px 6px 0 0;font-size:13px;">Soy Wax</span>
+  <span style="display:inline-block;background:#eef2f7;color:#1f2937;padding:6px 10px;border-radius:999px;margin:4px 6px 0 0;font-size:13px;">Home Fragrance</span>
+  <span style="display:inline-block;background:#eef2f7;color:#1f2937;padding:6px 10px;border-radius:999px;margin:4px 6px 0 0;font-size:13px;">DIY Gifts</span>
+  <span style="display:inline-block;background:#eef2f7;color:#1f2937;padding:6px 10px;border-radius:999px;margin:4px 6px 0 0;font-size:13px;">Cozy Home</span>
+</div>
+`
+            },
+            {
+                id: 'upcycled-pallet-coffee-table',
+                title: 'Upcycled Wooden Pallet Coffee Table',
+                date: 'July 05, 2026',
+                // 👇 Using a free stock image of a wooden table from Unsplash
+                image: 'https://images.unsplash.com/photo-1581366158937-ca057b5612e5?q=80&w=882&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                excerpt: 'Looking for a rustic weekend woodworking project? 🔨 Turn a simple discarded wooden pallet into a stunning, rustic-chic coffee table. It is the perfect blend of sustainable design and industrial farmhouse style.\n• Step-by-step sanding and staining guide\n• Eco-friendly and extremely budget-friendly\nGrab your power tools and let us build something beautiful. Save for later! 🪵',
+                content: `
+<p>Upcycling is not just an eco-friendly choice; it is a fantastic way to add character and history to your home decor. A wooden pallet coffee table brings a beautiful, rustic, industrial edge to any living room, and building it yourself is incredibly rewarding. You get to rescue discarded wood and give it a brand new, stylish purpose.</p>
+
+<div style="background:#f8fafc;border:1px solid #dbe4ee;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:24px;line-height:1.4;color:#1e293b;font-weight:700;padding-left:12px;border-left:4px solid #cbd5e1;">Key Takeaways</h3>
+  <ul style="margin:0;padding-left:20px;">
+    <li>Always look for pallets marked with "HT" (Heat Treated) to ensure they are safe for indoor use.</li>
+    <li>Heavy sanding is non-negotiable for a smooth, splinter-free coffee table.</li>
+    <li>Adding industrial caster wheels gives the table height and makes it easy to move.</li>
+    <li>A clear polyurethane topcoat will protect the wood from water rings and spills.</li>
+  </ul>
+</div>
+
+<h2 style="font-size:30px;line-height:1.3;margin:36px 0 18px;color:#0f172a;border-bottom:2px solid #e2e8f0;padding-bottom:10px;font-weight:700;">Sourcing and Prepping Your Pallet</h2>
+
+<p>The first step is finding the right pallet. Check with local hardware stores, garden centers, or warehouses. Once you have your pallet, inspect it closely for any stray nails or staples and remove them safely. Then, prepare for the most important step: sanding.</p>
+
+<p style="background:#f8fafc;border-left:4px solid #2563eb;padding:16px 18px;border-radius:10px;margin:22px 0;color:#1e293b;"><strong>Important:</strong> Never skip wearing a high-quality dust mask and safety goggles when sanding pallet wood. You never know exactly what the wood was exposed to during its previous life in shipping.</p>
+
+<h3 style="font-size:24px;line-height:1.4;margin:28px 0 14px;color:#1e293b;font-weight:700;padding-left:12px;border-left:4px solid #cbd5e1;">Staining and Sealing</h3>
+
+<p>After starting with a coarse grit sandpaper and finishing with a fine grit, your wood should be smooth to the touch. Now it is time to bring out the natural grain. A dark walnut stain offers a classic rustic look, while a whitewash technique provides a beautiful coastal or farmhouse feel.</p>
+
+<div style="background:#fdf4ff;border:1px solid #fae8ff;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h4 style="margin-top:0;margin-bottom:10px;font-size:20px;line-height:1.4;color:#86198f;font-weight:700;">Quick Note</h4>
+  <p style="margin:0;color:#a21caf;">Pallet wood is incredibly dry and porous. It will soak up stain much faster than fresh lumber, so apply your stain lightly and wipe away excess quickly to avoid a muddy finish.</p>
+</div>
+
+<h4 style="font-size:20px;line-height:1.4;margin:22px 0 12px;color:#334155;font-weight:700;background:#f8fafc;padding:10px 14px;border-radius:8px;">Attaching the Hardware</h4>
+
+<p>To elevate the pallet off the floor, attach heavy-duty industrial caster wheels to the four bottom corners. Not only does this bring the table to a functional height, but it also makes vacuuming under it an absolute breeze.</p>
+
+<p style="background:#fff7ed;border:1px solid #fed7aa;padding:16px 18px;border-radius:10px;margin:22px 0;color:#9a3412;"><strong>Pro Tip:</strong> Buy caster wheels that include locking mechanisms on at least two of the wheels. This prevents your coffee table from rolling away when you rest your feet on it!</p>
+
+<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:24px;line-height:1.4;color:#475569;font-weight:700;padding-left:12px;border-left:4px solid #94a3b8;">At a Glance</h3>
+  <ul style="margin:0;padding-left:20px;color:#475569;">
+    <li>Find an HT-stamped pallet</li>
+    <li>Sand thoroughly (80 to 220 grit)</li>
+    <li>Stain and seal</li>
+    <li>Screw on caster wheels</li>
+  </ul>
+</div>
+
+<p>Building your own furniture provides a massive sense of accomplishment. Enjoy your coffee on your brand new, handmade rustic masterpiece.</p>
+
+<div style="margin-top:28px;">
+  <h3 style="margin-bottom:12px;font-size:24px;line-height:1.4;color:#1e293b;font-weight:700;padding-left:12px;border-left:4px solid #cbd5e1;">Tags</h3>
+  <span style="display:inline-block;background:#eef2f7;color:#1f2937;padding:6px 10px;border-radius:999px;margin:4px 6px 0 0;font-size:13px;">Woodworking</span>
+  <span style="display:inline-block;background:#eef2f7;color:#1f2937;padding:6px 10px;border-radius:999px;margin:4px 6px 0 0;font-size:13px;">Upcycling</span>
+  <span style="display:inline-block;background:#eef2f7;color:#1f2937;padding:6px 10px;border-radius:999px;margin:4px 6px 0 0;font-size:13px;">Rustic Decor</span>
+  <span style="display:inline-block;background:#eef2f7;color:#1f2937;padding:6px 10px;border-radius:999px;margin:4px 6px 0 0;font-size:13px;">DIY Furniture</span>
+  <span style="display:inline-block;background:#eef2f7;color:#1f2937;padding:6px 10px;border-radius:999px;margin:4px 6px 0 0;font-size:13px;">Sustainability</span>
+</div>
+`
+            },
+            {
+                id: 'beginner-watercolor-florals',
+                title: 'Beginner Abstract Watercolor Florals',
+                date: 'July 18, 2026',
+                // 👇 Using a free stock image of Watercolors from Unsplash
+                image: 'https://images.unsplash.com/photo-1580136608079-72029d0de130?q=80&w=1000&auto=format&fit=crop',
+                excerpt: 'Always wanted to paint but felt too intimidated by details? 🎨 Loose, abstract watercolor florals are the perfect gateway into painting. It is all about capturing the feeling of a flower, not perfection.\n• Learn the simple wet-on-wet technique\n• Discover color blending without muddying\nGrab your brushes and let the water do the work for you. Save for later! 🌸',
+                content: `
+<p>Watercolor has a reputation for being difficult, but that is only true if you try to control it too much. The beauty of loose, abstract watercolor florals lies in letting the water and pigment interact naturally. This style of painting is deeply therapeutic, incredibly forgiving, and yields stunningly beautiful results even for complete beginners.</p>
+
+<div style="background:#f8fafc;border:1px solid #dbe4ee;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:24px;line-height:1.4;color:#1e293b;font-weight:700;padding-left:12px;border-left:4px solid #cbd5e1;">Key Takeaways</h3>
+  <ul style="margin:0;padding-left:20px;">
+    <li>Use 100% cotton watercolor paper; it makes a massive difference in how the paint flows.</li>
+    <li>A round brush (size 6 or 8) is all you need to create varied petal shapes.</li>
+    <li>Embrace the "wet-on-wet" technique for soft, dreamy color blends.</li>
+    <li>Leave white space on the paper to create the illusion of light and dimension.</li>
+  </ul>
+</div>
+
+<h2 style="font-size:30px;line-height:1.3;margin:36px 0 18px;color:#0f172a;border-bottom:2px solid #e2e8f0;padding-bottom:10px;font-weight:700;">The Power of the Round Brush</h2>
+
+<p>You do not need an extensive collection of expensive brushes to paint florals. A single, good-quality round brush with a fine tip and a plump belly is your best friend. By varying the pressure you apply, you can create a hair-thin stem or a wide, sweeping petal in a single stroke.</p>
+
+<p style="background:#f8fafc;border-left:4px solid #2563eb;padding:16px 18px;border-radius:10px;margin:22px 0;color:#1e293b;"><strong>Important:</strong> The amount of water on your brush dictates everything. Too much water will cause puddles that dry with hard edges, while too little water creates dry, scratchy textures. Practice finding the "Goldilocks" ratio on a scrap piece of paper first.</p>
+
+<h3 style="font-size:24px;line-height:1.4;margin:28px 0 14px;color:#1e293b;font-weight:700;padding-left:12px;border-left:4px solid #cbd5e1;">Painting Your First Rose</h3>
+
+<p>To paint a loose rose, start in the center with highly concentrated pigment. Use tiny, C-shaped strokes wrapping around an imaginary center. As you move outward, add more water to your brush to make the outer petals larger, lighter, and more transparent.</p>
+
+<div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h4 style="margin-top:0;margin-bottom:10px;font-size:20px;line-height:1.4;color:#1d4ed8;font-weight:700;">Why This Matters</h4>
+  <p style="margin:0;color:#2563eb;">Adding darker values in the center and lighter values on the edges naturally creates depth, tricking the eye into seeing a layered, dimensional flower rather than a flat circle.</p>
+</div>
+
+<h4 style="font-size:20px;line-height:1.4;margin:22px 0 12px;color:#334155;font-weight:700;background:#f8fafc;padding:10px 14px;border-radius:8px;">Adding Stems and Leaves</h4>
+
+<p>While the flower is still slightly damp, gently touch a green, water-loaded brush to the base of the petals. The green paint will bleed beautifully into the flower, creating an organic, natural connection between the bloom and the stem.</p>
+
+<p style="background:#fff7ed;border:1px solid #fed7aa;padding:16px 18px;border-radius:10px;margin:22px 0;color:#9a3412;"><strong>Pro Tip:</strong> Mix a tiny bit of your flower color (like pink or red) into your green leaf mixture. This ties the colors together and makes the painting feel cohesive and harmonious.</p>
+
+<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:24px;line-height:1.4;color:#475569;font-weight:700;padding-left:12px;border-left:4px solid #94a3b8;">Quick Points</h3>
+  <ul style="margin:0;padding-left:20px;color:#475569;">
+    <li>Keep your strokes loose</li>
+    <li>Let colors bleed together naturally</li>
+    <li>Don't overwork the paint</li>
+    <li>Have fun and relax</li>
+  </ul>
+</div>
+
+<p>Remember, watercolor is all about letting go of perfection. Have fun watching the paint dance across the paper, and frame your beautiful new art pieces!</p>
+
+<div style="margin-top:28px;">
+  <h3 style="margin-bottom:12px;font-size:24px;line-height:1.4;color:#1e293b;font-weight:700;padding-left:12px;border-left:4px solid #cbd5e1;">Tags</h3>
+  <span style="display:inline-block;background:#eef2f7;color:#1f2937;padding:6px 10px;border-radius:999px;margin:4px 6px 0 0;font-size:13px;">Watercolor</span>
+  <span style="display:inline-block;background:#eef2f7;color:#1f2937;padding:6px 10px;border-radius:999px;margin:4px 6px 0 0;font-size:13px;">Painting Tutorial</span>
+  <span style="display:inline-block;background:#eef2f7;color:#1f2937;padding:6px 10px;border-radius:999px;margin:4px 6px 0 0;font-size:13px;">Abstract Florals</span>
+  <span style="display:inline-block;background:#eef2f7;color:#1f2937;padding:6px 10px;border-radius:999px;margin:4px 6px 0 0;font-size:13px;">Art For Beginners</span>
+  <span style="display:inline-block;background:#eef2f7;color:#1f2937;padding:6px 10px;border-radius:999px;margin:4px 6px 0 0;font-size:13px;">Creative Hobby</span>
+</div>
+`
+            }
+        ];
+
+        // 2. Static Legal Pages
+        const pages = {
+            'about': {
+                title: 'About Us',
+                content: `
+                    <p>Welcome to <strong>The Creative DIY Corner</strong>!</p>
+                    <p>Our mission is to create a positive, inspiring, and safe space on the internet where we share thoughts, stories, and ideas about web development, creative hobbies, and daily life.</p>
+                    <p>Whether you are here to learn how to code, find creative inspiration, or just read some fun stories, we are glad you stopped by. We strive to provide high-quality, family-friendly content that sparks creativity and learning.</p>
+                    <p>Thank you for being part of our community!</p>
+                `
+            },
+            'privacy': {
+                title: 'Privacy Policy',
+                content: `
+                    <p><strong>Last updated: May 2026</strong></p>
+                    <p>At The Creative DIY Corner, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by us and how we use it.</p>
+                    
+                    <h3>Log Files</h3>
+                    <p>We follow a standard procedure of using log files. The information collected includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends and administering the site.</p>
+                    <h3>Cookies and Web Beacons</h3>
+                    <p>Like any other website, we use "cookies". These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.</p>
+                    <h3>Google AdSense & Third-Party Privacy Policies</h3>
+                    <p>Third-party ad servers or ad networks use technologies like cookies, JavaScript, or Web Beacons that are used in their respective advertisements and links that appear on our blog. They automatically receive your IP address when this occurs.</p>
+                    <ul>
+                        <li>Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to your website or other websites.</li>
+                        <li>Google's use of advertising cookies enables it and its partners to serve ads to your users based on their visit to your sites and/or other sites on the Internet.</li>
+                        <li>Users may opt out of personalized advertising by visiting Google's <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Ads Settings</a>. Alternatively, you can opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer">www.aboutads.info</a>.</li>
+                    </ul>
+                `
+            },
+            'terms': {
+                title: 'Terms of Service',
+                content: `
+                    <p><strong>Effective Date: May 2026</strong></p>
+                    <h3>1. Acceptance of Terms</h3>
+                    <p>By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement.</p>
+                    
+                    <h3>2. User Conduct</h3>
+                    <p>Our blog is a family-friendly space. You agree to use the site only for lawful purposes. You agree not to take any action that might compromise the security of the site, render the site inaccessible to others, or otherwise cause damage to the site or the content.</p>
+                    <h3>3. Intellectual Property</h3>
+                    <p>The content, organization, graphics, design, and other matters related to the Site are protected under applicable copyrights and proprietary rights. The copying or redistribution by you of any such matters is strictly prohibited without our express written permission.</p>
+                `
+            },
+            'contact': {
+                title: 'Contact Us',
+                content: `
+                    <p>We would love to hear from you! Whether you have a question about our content, need assistance with our website, or want to inquire about our Privacy Policy and Terms of Service, feel free to reach out.</p>
+                    <p><strong>Email:</strong> <a href="mailto:contact@example.com">contact@example.com</a></p>
+                    <p>Please note that we aim to respond to all inquiries within 48 to 72 hours. We kindly ask that all communications remain respectful and appropriate.</p>
+                `
+            }
+        };
+
+        // 3. Application Logic
+        const app = document.getElementById('app');
+        const blogUsername = "The Creative DIY Corner";
+        const avatarUrl = "./assets/blog-avatar.jpg"; // Custom avatar placeholder
+
+        // Render Home
+        function renderHome() {
+            let html = '';
+            posts.forEach(post => {
+                html += `
+                    <div class="post-card" onclick="navigate('post', '${post.id}')">
+                        <div class="post-header">
+                            <img class="avatar" src="${avatarUrl}" alt="Avatar">
+                            <span class="username">${blogUsername}</span>
+                        </div>
+                        <img class="post-image" src="${post.image}" alt="${post.title}" onerror="this.onerror=null; this.src='https://via.placeholder.com/660x400/FAFAF9/D97706?text=Image+Not+Found'">
+                        <div class="post-content">
+                            <h2>${post.title}</h2>
+                            <p>${post.excerpt}</p>
+                        </div>
+                        <div class="post-footer">
+                            <span>${post.date}</span>
+                            <span style="letter-spacing: 10px; font-size: 1.1rem; color: var(--primary-accent);">↻ ♥</span>
+                        </div>
+                    </div>
+                `;
+            });
+            app.innerHTML = html;
+        }
+
+        // Render Static Page
+        function renderPage(pageId) {
+            const page = pages[pageId];
+            if (!page) {
+                app.innerHTML = `<p>Page not found.</p><a class="back-button" onclick="navigate('home')">&larr; Back to Home</a>`;
+                return;
+            }
+            app.innerHTML = `
+                <a class="back-button" onclick="navigate('home')">&larr; Back to Home</a>
+                <div class="single-post">
+                    <div class="post-content" style="padding-top: 30px; padding-bottom: 30px;">
+                        <h1>${page.title}</h1>
+                        ${page.content}
+                    </div>
+                </div>
+            `;
+            window.scrollTo(0, 0);
+        }
+
+        // Render Single Post
+        function renderPost(postId) {
+            const post = posts.find(p => p.id === postId);
+            if (!post) {
+                app.innerHTML = `<p>Post not found.</p><a class="back-button" onclick="navigate('home')">&larr; Back to Home</a>`;
+                return;
+            }
+            app.innerHTML = `
+                <a class="back-button" onclick="navigate('home')">&larr; Back to Home</a>
+                <div class="single-post">
+                    <div class="post-header">
+                        <img class="avatar" src="${avatarUrl}" alt="Avatar">
+                        <span class="username">${blogUsername}</span>
+                    </div>
+                    <img class="post-image" src="${post.image}" alt="${post.title}" onerror="this.onerror=null; this.src='https://via.placeholder.com/660x400/FAFAF9/D97706?text=Image+Not+Found'">
+                    <div class="post-content">
+                        <h1>${post.title}</h1>
+                        ${post.content}
+                    </div>
+                    <div class="post-footer">
+                        <span>${post.date}</span>
+                        <span style="letter-spacing: 10px; font-size: 1.1rem; color: var(--primary-accent);">↻ ♥</span>
+                    </div>
+                </div>
+            `;
+            window.scrollTo(0, 0);
+        }
+
+        // Router
+        function navigate(view, id = null) {
+            if (view === 'home') {
+                window.location.hash = '';
+                renderHome();
+            } else if (view === 'post') {
+                window.location.hash = id;
+                renderPost(id);
+            } else if (view === 'page') {
+                window.location.hash = id;
+                renderPage(id);
+            }
+        }
+
+        // Hash listener
+        window.addEventListener('hashchange', () => {
+            const hash = window.location.hash.replace('#', '');
+            if (hash) {
+                if (pages[hash]) {
+                    renderPage(hash);
+                } else {
+                    renderPost(hash);
+                }
+            } else {
+                renderHome();
+            }
+        });
+
+        // Initial Load
+        const initialHash = window.location.hash.replace('#', '');
+        if (initialHash) {
+            if (pages[initialHash]) {
+                renderPage(initialHash);
+            } else {
+                renderPost(initialHash);
+            }
+        } else {
+            renderHome();
+        }
+    </script>
+</body>
+</html>
